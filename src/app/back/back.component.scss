@@ -1,0 +1,20 @@
+$primary-background-color: #070d18;
+.back-button {
+  background-color: $primary-background-color;
+  grid-area: back;
+  display: flex;
+  color: #85859b;
+  // padding-top: 1.5em;
+}
+.back-button p {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #b9b9c8;
+  padding-left: 0.5em;
+}

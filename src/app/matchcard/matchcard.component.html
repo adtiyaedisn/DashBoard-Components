@@ -1,0 +1,67 @@
+<!-- <p>matchcard works!</p> -->
+<div class="matchcard-wrapper">
+  <!-- If it is Team Match -->
+  <div class="team-icon" *ngIf="isSinglePlayer">
+    <div>
+      <img src="../../assets/mi.png" alt="" />
+      <p>{{ teamNameFirst }}</p>
+    </div>
+    <p>vs</p>
+    <div>
+      <img src="../../assets/mi.png" alt="" />
+      <p>{{ teamNameSecond }}</p>
+    </div>
+  </div>
+
+  <!-- If it is Duo Match -->
+  <div class="duo-icon" *ngIf="isDoublePlayer">
+    <div>
+      <img src="../../assets/mi.png" alt="" />
+      <img src="../../assets/mi.png" alt="" />
+      <p>{{ teamNameFirst }}</p>
+    </div>
+    <p>vs</p>
+    <div>
+      <img src="../../assets/mi.png" alt="" />
+      <img src="../../assets/mi.png" alt="" />
+      <p>{{ teamNameSecond }}</p>
+    </div>
+  </div>
+
+  <!-- Card Content -->
+  <div class="match-details">
+    <p>{{ sportType }}</p>
+    <p>{{ tournamentType }}</p>
+    <p>{{ matchTime }}</p>
+    <div>
+      <img src="../../assets/matchCard/live-streaming.png" alt="" />
+      <p>{{ matchType }}</p>
+    </div>
+  </div>
+
+  <!-- Match Support -->
+  <div class="match-support">
+    <img src="../../assets/matchCard/group.png" alt="" />
+    <img src="../../assets/matchCard/commentator.png" alt="" />
+    <img src="../../assets/matchCard/money.png" alt="" />
+    <img src="../../assets/matchCard/merch.png" alt="" />
+  </div>
+
+  <!-- Match Timing -->
+  <div class="match-timing" *ngIf="isTiming">
+    <div>
+      <h3>06 : &nbsp;</h3>
+      <p>hrs</p>
+    </div>
+
+    <div>
+      <h3>30 :&nbsp;</h3>
+      <p>min</p>
+    </div>
+
+    <div>
+      <h3>30</h3>
+      <p>sec</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="login-page">
+  <div class="login-wrapper">
+    <div class="login-header">
+      <div>
+        <img
+          src="https://cdn.edisn.ai/sakura/v1.0/static/assets/img/icons/edisn-icon.svg"
+          alt=""
+          srcset=""
+        />
+        <h3>Edisn</h3>
+      </div>
+
+      <div>
+        <h2>Login</h2>
+        <hr />
+      </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-content">
+      <fieldset>
+        <legend>Email</legend>
+        <input type="email" name="email" id="" [(ngModel)]="email" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Password</legend>
+        <input type="password" name="password" id="" [(ngModel)]="password" />
+      </fieldset>
+
+      <button (click)="onSignin(email, password)">Login</button>
+    </div>
+  </div>
+  <div class="image-wrapper"></div>
+  <div class="image-wrapper"></div>
+</div>

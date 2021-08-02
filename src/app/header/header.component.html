@@ -1,0 +1,18 @@
+<div class="navbar">
+  <div>
+    <img [src]="companyLogo" alt="" srcset="" />
+    <p>{{ companyName }}</p>
+  </div>
+  <!-- Company Profile  -->
+  <div *ngIf="isCompanyLogoVisible">
+    <p>{{ greetingMessage }}</p>
+    <img [src]="clientLogo" alt="" srcset="" />
+  </div>
+
+  <!-- User Profile -->
+  <div *ngIf="isUserProfileVisible">
+    <img src="" alt="" />
+    <!-- <img [src]="userProfileLogo" alt="" srcset="" /> -->
+    <p>{{ greetingMessage }}</p>
+  </div>
+</div>
