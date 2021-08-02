@@ -1,0 +1,1622 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "FirebaseService",
+            "id": "injectable-FirebaseService-c8cb37f8c262cd4858ba2f17162e83a2",
+            "file": "src/app/services/firebase.service.ts",
+            "properties": [
+                {
+                    "name": "firebaseAuth",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AngularFireAuth",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "isLoggedIn",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "methods": [
+                {
+                    "name": "logOut",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "signIn",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        129
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n// we have imported fireAuth Metthod from angualar Fire\nimport { AngularFireAuth } from '@angular/fire/auth';\nimport { Router } from '@angular/router';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class FirebaseService {\n  isLoggedIn = false;\n  constructor(public firebaseAuth: AngularFireAuth, private router: Router) {}\n\n  async signIn(email: string, password: string) {\n    await this.firebaseAuth\n      .signInWithEmailAndPassword(email, password)\n      .then((res) => {\n        console.log(res);\n        this.isLoggedIn = true;\n        this.router.navigate(['/home']);\n        localStorage.setItem('user', JSON.stringify(res));\n      })\n      .catch((err) => {\n        console.log(err);\n      });\n  }\n\n  // Logout\n  logOut() {\n    this.firebaseAuth.signOut();\n    localStorage.removeItem('user');\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "firebaseAuth",
+                        "type": "AngularFireAuth",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "firebaseAuth",
+                        "type": "AngularFireAuth",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-2e9a9c930d2a0d4276a7955cdd15419d",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isCompanyLogo",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "isDuoPlayer",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "isSinglePlayer",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "isTiming",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "isUserProfile",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'dashlogin'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  title = 'dashlogin';\n\n  // Header Component\n  isCompanyLogo: boolean = false;\n  isUserProfile: boolean = true;\n\n  // MatchCard\n  isSinglePlayer: boolean = false;\n  isDuoPlayer: boolean = true;\n  isTiming: boolean = true;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<!-- <router-outlet></router-outlet> -->\n<app-header\n  [isCompanyLogoVisible]=\"isCompanyLogo\"\n  [isUserProfileVisible]=\"isUserProfile\"\n></app-header>\n<!-- <app-header></app-header> -->\n<app-back></app-back>\n<app-matchcard\n  [isSinglePlayer]=\"isSinglePlayer\"\n  [isDoublePlayer]=\"isDuoPlayer\"\n  [isTiming]=\"isTiming\"\n></app-matchcard>\n\n<app-usercard></app-usercard>\n"
+        },
+        {
+            "name": "BackComponent",
+            "id": "component-BackComponent-1407a466b88004e49351409c984c5250",
+            "file": "src/app/back/back.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-back",
+            "styleUrls": [
+                "./back.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./back.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "backClicked",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'app-back',\n  templateUrl: './back.component.html',\n  styleUrls: ['./back.component.scss'],\n})\nexport class BackComponent implements OnInit {\n  constructor(private location: Location) {}\n\n  ngOnInit(): void {}\n\n  backClicked(event: any) {\n    this.location.back();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$primary-background-color: #070d18;\n.back-button {\n  background-color: $primary-background-color;\n  grid-area: back;\n  display: flex;\n  color: #85859b;\n  // padding-top: 1.5em;\n}\n.back-button p {\n  font-family: Inter;\n  font-size: 14px;\n  font-weight: normal;\n  font-stretch: normal;\n  font-style: normal;\n  line-height: normal;\n  letter-spacing: normal;\n  text-align: left;\n  color: #b9b9c8;\n  padding-left: 0.5em;\n}\n",
+                    "styleUrl": "./back.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "location",
+                        "type": "Location",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "location",
+                        "type": "Location",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- Back Component -->\n\n<div (click)=\"backClicked($event)\" class=\"back-button\">\n  <img src=\"../../assets/back.svg\" alt=\"\" />\n  <p>Back</p>\n</div>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-4d6525e80c5dad05e62949c370336fa1",
+            "file": "src/app/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "isCompanyLogoVisible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isUserProfileVisible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "clientLogo",
+                    "defaultValue": "'https://cdn.cdnlogo.com/logos/e/63/ea-sports.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "companyLogo",
+                    "defaultValue": "'https://cdn.edisn.ai/sakura/v1.0/static/assets/img/icons/edisn-icon.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "companyName",
+                    "defaultValue": "'Edisn'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "greetingMessage",
+                    "defaultValue": "'Hello ESPN!'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "userLogo",
+                    "defaultValue": "'https://cdn.cdnlogo.com/logos/e/63/ea-sports.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "userProfileLogo",
+                    "defaultValue": "'https://cdn.cdnlogo.com/logos/s/8/sports-direct.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent implements OnInit {\n  // Configs\n  @Input() isCompanyLogoVisible = true;\n  @Input() isUserProfileVisible = true;\n\n  // Content\n  companyLogo: string =\n    'https://cdn.edisn.ai/sakura/v1.0/static/assets/img/icons/edisn-icon.svg';\n  companyName: string = 'Edisn';\n  clientLogo: string = 'https://cdn.cdnlogo.com/logos/e/63/ea-sports.svg';\n  greetingMessage: string = 'Hello ESPN!';\n  userLogo: string = 'https://cdn.cdnlogo.com/logos/e/63/ea-sports.svg';\n  userProfileLogo: string =\n    'https://cdn.cdnlogo.com/logos/s/8/sports-direct.svg';\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$background-color-primary: #070d18;\n\n.navbar {\n  display: flex;\n  flex-direction: row;\n  background-color: $background-color-primary;\n  img {\n    height: 2em;\n    width: auto;\n    // aspect-ratio: 16/9;\n  }\n}\n\n.navbar > div:nth-of-type(1) {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  p {\n    font-family: Inter;\n    font-size: 22px;\n    font-weight: 600;\n    text-align: left;\n    color: #ffffff;\n    padding-left: 0.5em;\n  }\n}\n.navbar > div:nth-of-type(2) {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  margin-left: auto;\n  color: #85859b;\n  p {\n    font-family: Inter;\n    font-size: 13px;\n    font-weight: 500;\n    text-align: right;\n    // color: $font-secondary;\n    padding-right: 0.5em;\n  }\n  img {\n    padding-right: 1em;\n  }\n}\n\n.navbar > div:nth-of-type(3) {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  margin-left: auto;\n  color: #85859b;\n  p {\n    font-family: Inter;\n    font-size: 13px;\n    font-weight: 500;\n    text-align: right;\n    // color: $font-secondary;\n    padding-right: 0.5em;\n  }\n  img {\n    padding-right: 1em;\n  }\n}\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 21
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"navbar\">\n  <div>\n    <img [src]=\"companyLogo\" alt=\"\" srcset=\"\" />\n    <p>{{ companyName }}</p>\n  </div>\n  <!-- Company Profile  -->\n  <div *ngIf=\"isCompanyLogoVisible\">\n    <p>{{ greetingMessage }}</p>\n    <img [src]=\"clientLogo\" alt=\"\" srcset=\"\" />\n  </div>\n\n  <!-- User Profile -->\n  <div *ngIf=\"isUserProfileVisible\">\n    <img src=\"\" alt=\"\" />\n    <!-- <img [src]=\"userProfileLogo\" alt=\"\" srcset=\"\" /> -->\n    <p>{{ greetingMessage }}</p>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "HomeComponent",
+            "id": "component-HomeComponent-0368ba31f32dcbd90cb54a0bd661b89c",
+            "file": "src/app/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home",
+            "styleUrls": [
+                "./home.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./home.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-home',\n  templateUrl: './home.component.html',\n  styleUrls: ['./home.component.scss']\n})\nexport class HomeComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./home.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>home works!</p>\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-4b84b0175be2855a62fecb8de644b198",
+            "file": "src/app/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "email",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "firebaseServie",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FirebaseService",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "password",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "signIn",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSignin",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        129
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { FirebaseService } from '../services/firebase.service';\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent implements OnInit {\n  constructor(public firebaseServie: FirebaseService) {}\n  signIn: boolean = true;\n  email: string = '';\n  password: string = '';\n  ngOnInit(): void {\n    if (localStorage.getItem('user') !== null) {\n      this.signIn = true;\n    } else {\n      this.signIn = false;\n    }\n  }\n\n  async onSignin(email: string, password: string) {\n    await this.firebaseServie.signIn(email, password);\n    if (this.firebaseServie.isLoggedIn) {\n      this.signIn = true;\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$background-color-darker: #0e192d;\n$font-color-primary: #ffffff;\n$font-family: Inter;\n\ntextarea:focus,\ninput:focus {\n  outline: none;\n  background-color: $background-color-darker;\n}\n\n*:focus {\n  outline: none;\n}\n.login-page {\n  background-image: url(\"../../assets/stadium.jpg\"); /* fallback */\n  height: 100vh; /* You must set a specified height */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container*/\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  grid-template-areas: \"image image login\";\n}\n\n.image-wrapper {\n  grid-area: image;\n}\n\n.login-wrapper {\n  grid-area: login;\n  background-color: $background-color-darker;\n  margin: 1em;\n  border-radius: 1em;\n}\n\n.login-header > div:nth-of-type(1) {\n  display: flex;\n  align-items: center;\n  padding: 1em 1em 1em 1em;\n}\n\n.login-header > div:nth-of-type(1) > img {\n  height: 2em;\n  width: auto;\n}\n\n.login-header > div:nth-of-type(1) > h3 {\n  padding-left: 0.5em;\n  color: $font-color-primary;\n  font-family: $font-family;\n}\n\n.login-header > div:nth-of-type(2) {\n  display: flex;\n  flex-direction: column;\n}\n\n.login-header > div:nth-of-type(2) > h2 {\n  color: $font-color-primary;\n  font-family: $font-family;\n  padding-left: 1em;\n}\n\n.login-header > div:nth-of-type(2) > hr {\n  color: $font-color-primary;\n  width: 100%;\n  opacity: 0.1;\n}\n\n.login-content {\n  display: flex;\n  flex-direction: column;\n  margin: 1em 1em 1em 1em;\n}\n\n.login-content > fieldset {\n  background-color: $background-color-darker;\n  height: 2.5em;\n  border-radius: 5px;\n  border: solid 1px #85859b;\n  margin-bottom: 2em;\n  color: $font-color-primary;\n  font-family: $font-family;\n}\n\n.login-content > fieldset > legend {\n  color: #85859b;\n}\n\n.login-content > fieldset > input {\n  background-color: $background-color-darker;\n  //   height: 2.5em;\n  border-radius: 5px;\n  border: none;\n  margin-bottom: 2em;\n  color: $font-color-primary;\n  font-family: $font-family;\n}\n\n.login-content > button {\n  color: $font-color-primary;\n  border: none;\n  font-family: Inter;\n  height: 2.5em;\n  font-weight: 500;\n  border-radius: 7px;\n  font-size: 1em;\n  background: linear-gradient(83deg, #2280b8 0%, #5ddbee 100%);\n}\n",
+                    "styleUrl": "./login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "firebaseServie",
+                        "type": "FirebaseService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "firebaseServie",
+                        "type": "FirebaseService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"login-page\">\n  <div class=\"login-wrapper\">\n    <div class=\"login-header\">\n      <div>\n        <img\n          src=\"https://cdn.edisn.ai/sakura/v1.0/static/assets/img/icons/edisn-icon.svg\"\n          alt=\"\"\n          srcset=\"\"\n        />\n        <h3>Edisn</h3>\n      </div>\n\n      <div>\n        <h2>Login</h2>\n        <hr />\n      </div>\n    </div>\n\n    <!-- Login Container -->\n    <div class=\"login-content\">\n      <fieldset>\n        <legend>Email</legend>\n        <input type=\"email\" name=\"email\" id=\"\" [(ngModel)]=\"email\" />\n      </fieldset>\n\n      <fieldset>\n        <legend>Password</legend>\n        <input type=\"password\" name=\"password\" id=\"\" [(ngModel)]=\"password\" />\n      </fieldset>\n\n      <button (click)=\"onSignin(email, password)\">Login</button>\n    </div>\n  </div>\n  <div class=\"image-wrapper\"></div>\n  <div class=\"image-wrapper\"></div>\n</div>\n"
+        },
+        {
+            "name": "MatchcardComponent",
+            "id": "component-MatchcardComponent-c5b722123c26ac880031adcd67b564cb",
+            "file": "src/app/matchcard/matchcard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-matchcard",
+            "styleUrls": [
+                "./matchcard.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./matchcard.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "isDoublePlayer",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isSinglePlayer",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isTiming",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "matchTime",
+                    "defaultValue": "'02:40PM - 04:30 PM'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "matchType",
+                    "defaultValue": "'Live event'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "sportType",
+                    "defaultValue": "'CRICKET'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "teamNameFirst",
+                    "defaultValue": "'RCB'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "teamNameSecond",
+                    "defaultValue": "'MI'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "tournamentType",
+                    "defaultValue": "'Indian Premier League 2021'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-matchcard',\n  templateUrl: './matchcard.component.html',\n  styleUrls: ['./matchcard.component.scss'],\n})\nexport class MatchcardComponent implements OnInit {\n  @Input() isSinglePlayer: boolean = true;\n  @Input() isDoublePlayer: boolean = true;\n  @Input() isTiming: boolean = true;\n  constructor() {}\n\n  teamNameSecond: string = 'MI';\n  teamNameFirst: string = 'RCB';\n  sportType: string = 'CRICKET';\n  tournamentType: string = 'Indian Premier League 2021';\n  matchTime: string = '02:40PM - 04:30 PM';\n  matchType: string = 'Live event';\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$background-color-primary: #1c2b47;\np {\n  font-family: Inter;\n}\n\n.matchcard-wrapper {\n  border-radius: 0.5em;\n  background-color: $background-color-primary;\n  width: max-content;\n}\n\n.matchcard-wrapper > div:nth-of-type(1),\ndiv:nth-of-type(2) {\n  padding: 0.5em 1em 0em 1em;\n}\n.team-icon {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  p {\n    color: #b9b9c8;\n    padding: 0.5em;\n    font-size: 0.7em;\n  }\n}\n\n.team-icon > div {\n  p {\n    text-align: center;\n    color: #b9b9c8;\n    font-size: 0.8em;\n  }\n}\n\n.team-icon > div > img {\n  height: 3em;\n  width: auto;\n  border-radius: 50%;\n  background-color: #b9b9c8;\n}\n\n.duo-icon {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  p {\n    color: #b9b9c8;\n    padding: 0.5em;\n    font-size: 0.7em;\n  }\n}\n\n.duo-icon > div {\n  p {\n    text-align: center;\n    color: #b9b9c8;\n    font-size: 0.8em;\n  }\n}\n\n.duo-icon > div > img {\n  height: 3em;\n  width: auto;\n  border-radius: 50%;\n  background-color: #b9b9c8;\n}\n\n.duo-icon > div > img:nth-of-type(1) {\n  margin-right: -0.4em;\n  border: 2px solid $background-color-primary;\n}\n\n.duo-icon > div > img:nth-of-type(2) {\n  border: 2px solid $background-color-primary;\n}\n.match-details {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  text-align: center;\n}\n\n.match-details > p:nth-of-type(1),\np:nth-of-type(2) {\n  padding-top: 0.5em;\n  font-size: 0.8em;\n  color: #85859b;\n}\n\n.match-details > p:nth-of-type(3) {\n  padding-top: 0.5em;\n  color: white;\n  font-size: 1em;\n}\n\n.match-details > div {\n  padding-top: 1em;\n  display: flex;\n  justify-content: center;\n  p {\n    padding-left: 0.5em;\n    color: white;\n    font-size: 0.7em;\n  }\n}\n\n.match-support {\n  margin-top: 1em;\n  padding: 0.5em 0.5em 0.5em 0.5em;\n  box-shadow: 0 -3px 12px 0 rgba(0, 0, 0, 0.2);\n  display: flex;\n  justify-content: space-around;\n}\n\n.match-support > img {\n  padding: 0.5em;\n  border-radius: 50%;\n  background-color: rgba(57, 183, 110, 0.2);\n  height: 1em;\n  width: auto;\n}\n\n.match-timing {\n  display: flex;\n  justify-content: center;\n  color: white;\n  font-family: Inter;\n  text-align: center;\n  box-shadow: 0 -3px 12px 0 rgba(0, 0, 0, 0.2);\n  padding: 0.5em 0.5em 0.5em 0.5em;\n  div {\n    padding: 0;\n  }\n  p {\n    padding-right: 0.4em;\n    color: #b9b9c8;\n    font-size: 0.7em;\n  }\n}\n",
+                    "styleUrl": "./matchcard.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 11
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- <p>matchcard works!</p> -->\n<div class=\"matchcard-wrapper\">\n  <!-- If it is Team Match -->\n  <div class=\"team-icon\" *ngIf=\"isSinglePlayer\">\n    <div>\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <p>{{ teamNameFirst }}</p>\n    </div>\n    <p>vs</p>\n    <div>\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <p>{{ teamNameSecond }}</p>\n    </div>\n  </div>\n\n  <!-- If it is Duo Match -->\n  <div class=\"duo-icon\" *ngIf=\"isDoublePlayer\">\n    <div>\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <p>{{ teamNameFirst }}</p>\n    </div>\n    <p>vs</p>\n    <div>\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <img src=\"../../assets/mi.png\" alt=\"\" />\n      <p>{{ teamNameSecond }}</p>\n    </div>\n  </div>\n\n  <!-- Card Content -->\n  <div class=\"match-details\">\n    <p>{{ sportType }}</p>\n    <p>{{ tournamentType }}</p>\n    <p>{{ matchTime }}</p>\n    <div>\n      <img src=\"../../assets/matchCard/live-streaming.png\" alt=\"\" />\n      <p>{{ matchType }}</p>\n    </div>\n  </div>\n\n  <!-- Match Support -->\n  <div class=\"match-support\">\n    <img src=\"../../assets/matchCard/group.png\" alt=\"\" />\n    <img src=\"../../assets/matchCard/commentator.png\" alt=\"\" />\n    <img src=\"../../assets/matchCard/money.png\" alt=\"\" />\n    <img src=\"../../assets/matchCard/merch.png\" alt=\"\" />\n  </div>\n\n  <!-- Match Timing -->\n  <div class=\"match-timing\" *ngIf=\"isTiming\">\n    <div>\n      <h3>06 : &nbsp;</h3>\n      <p>hrs</p>\n    </div>\n\n    <div>\n      <h3>30 :&nbsp;</h3>\n      <p>min</p>\n    </div>\n\n    <div>\n      <h3>30</h3>\n      <p>sec</p>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "UsercardComponent",
+            "id": "component-UsercardComponent-37ebe276fa83546fddb701b363c62123",
+            "file": "src/app/usercard/usercard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-usercard",
+            "styleUrls": [
+                "./usercard.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./usercard.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "userName",
+                    "defaultValue": "'Somedude Someone'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "userStatus",
+                    "defaultValue": "'• Active'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "userType",
+                    "defaultValue": "'Cricket Admin'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-usercard',\n  templateUrl: './usercard.component.html',\n  styleUrls: ['./usercard.component.scss'],\n})\nexport class UsercardComponent implements OnInit {\n  constructor() {}\n  //\n  userName: string = 'Somedude Someone';\n  userType: string = 'Cricket Admin';\n  userStatus: string = '• Active';\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".user-info {\n  background-color: #1c2b47;\n  width: fit-content;\n  padding: 1em;\n  border-radius: 6px;\n  font-family: Inter;\n}\n\n.user-info > p:nth-of-type(1) {\n  color: white;\n}\n\n.user-info > p:nth-of-type(2) {\n  color: #85859b;\n}\n\n.user-info > p:nth-of-type(3) {\n  color: white;\n}\n",
+                    "styleUrl": "./usercard.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- <p>usercard works!</p> -->\n<div class=\"user-info\">\n  <p>{{ userName }}</p>\n  <p>{{ userType }}</p>\n  <p>{{ userStatus }}</p>\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-d319dd427bc1c60863ca60802209a250",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AngularFireModule } from '@angular/fire';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { LoginComponent } from './login/login.component';\nimport { HomeComponent } from './home/home.component';\nimport { FirebaseService } from './services/firebase.service';\nimport { FormsModule } from '@angular/forms';\nimport { HeaderComponent } from './header/header.component';\nimport { BackComponent } from './back/back.component';\nimport { MatchcardComponent } from './matchcard/matchcard.component';\nimport { UsercardComponent } from './usercard/usercard.component';\n\n@NgModule({\n  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, BackComponent, MatchcardComponent, UsercardComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    AngularFireModule.initializeApp({\n      apiKey: 'AIzaSyC7l-EgXYKfsMnpQu0EynlsgIcNEUyX3Y4',\n      authDomain: 'edisn-aditya-test.firebaseapp.com',\n      databaseURL: 'https://edisn-aditya-test-default-rtdb.firebaseio.com',\n      projectId: 'edisn-aditya-test',\n      storageBucket: 'edisn-aditya-test.appspot.com',\n      messagingSenderId: '180965043004',\n      appId: '1:180965043004:web:2bb7de39ea3e9dd2cbcc39',\n    }),\n    FormsModule,\n  ],\n  providers: [FirebaseService],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": [
+                        {
+                            "name": "FirebaseService"
+                        }
+                    ]
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "BackComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "HomeComponent"
+                        },
+                        {
+                            "name": "LoginComponent"
+                        },
+                        {
+                            "name": "MatchcardComponent"
+                        },
+                        {
+                            "name": "UsercardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-035a395b9305a8690f64f0480e85e45d",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { HeaderComponent } from './header/header.component';\nimport { HomeComponent } from './home/home.component';\nimport { LoginComponent } from './login/login.component';\n\nconst routes: Routes = [\n  { path: '', component: LoginComponent },\n  { path: 'home', component: HomeComponent },\n  { path: 'header', component: HeaderComponent },\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule],\n})\nexport class AppRoutingModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Back",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Back.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "companyProfile",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "DoublePlayer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/MatchCard.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "singlePlayer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/MatchCard.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Back.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<BackComponent>",
+                "defaultValue": "(args: BackComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<HeaderComponent>",
+                "defaultValue": "(args: HeaderComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/MatchCard.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<MatchcardComponent>",
+                "defaultValue": "(args: MatchcardComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "TimingInVisible",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/MatchCard.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "TimingVisible",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/MatchCard.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "userProfile",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/stories/Back.stories.ts": [
+                {
+                    "name": "Back",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Back.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Back.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<BackComponent>",
+                    "defaultValue": "(args: BackComponent) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "companyProfile",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<HeaderComponent>",
+                    "defaultValue": "(args: HeaderComponent) => ({\n  props: args,\n})"
+                },
+                {
+                    "name": "userProfile",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "src/stories/MatchCard.stories.ts": [
+                {
+                    "name": "DoublePlayer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/MatchCard.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "singlePlayer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/MatchCard.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/MatchCard.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<MatchcardComponent>",
+                    "defaultValue": "(args: MatchcardComponent) => ({\n  props: args,\n})"
+                },
+                {
+                    "name": "TimingInVisible",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/MatchCard.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "TimingVisible",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/MatchCard.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "component": "LoginComponent"
+                    },
+                    {
+                        "path": "home",
+                        "component": "HomeComponent"
+                    },
+                    {
+                        "path": "header",
+                        "component": "HeaderComponent"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/back/back.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BackComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/matchcard/matchcard.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MatchcardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/firebase.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "FirebaseService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/usercard/usercard.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UsercardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Back.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Back",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Back.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "companyProfile",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "userProfile",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/MatchCard.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DoublePlayer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/MatchCard.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "singlePlayer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/MatchCard.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/MatchCard.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TimingInVisible",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/MatchCard.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TimingVisible",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
