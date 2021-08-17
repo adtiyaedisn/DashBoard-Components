@@ -18,15 +18,7 @@ import { UsercardComponent } from './usercard/usercard.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyC7l-EgXYKfsMnpQu0EynlsgIcNEUyX3Y4',
-      authDomain: 'edisn-aditya-test.firebaseapp.com',
-      databaseURL: 'https://edisn-aditya-test-default-rtdb.firebaseio.com',
-      projectId: 'edisn-aditya-test',
-      storageBucket: 'edisn-aditya-test.appspot.com',
-      messagingSenderId: '180965043004',
-      appId: '1:180965043004:web:2bb7de39ea3e9dd2cbcc39',
-    }),
+    AngularFireModule.initializeApp({}),
     FormsModule,
   ],
   providers: [FirebaseService],
